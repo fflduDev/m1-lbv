@@ -6,7 +6,7 @@ public class LinkedListImpl implements LinkedList {
 	public Boolean isItemInList(String thisItem) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} //test commit
 
 	@Override
 	public Boolean addItem(String thisItem) {
