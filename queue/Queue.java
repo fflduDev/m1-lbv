@@ -2,6 +2,17 @@ package queue;
 
 public interface Queue {
 
+	class Node{
+		String Data;
+		Node next;
+
+		public Node (String data){
+			this.Data = data;
+			this.next = null;
+		}
+
+	}
+
 	 boolean isFull() ;
 	 boolean isEmpty();
 	 

@@ -1,41 +1,78 @@
 package queue;
 
 public class QueueImpl implements Queue {
+	private Node front, rear;
+
+	public QueueImpl() {
+		this.front = this.rear = null;
+	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return front == null;
 	}
 
 	@Override
+	//Adds new node to the back of the queue
 	public void enQueue(String element) {
-		// TODO Auto-generated method stub
-		
+		Node newNode = new Node(element);
+		if (rear == null) {
+			front = rear = newNode;
+		}
+		else {
+			rear.next = newNode;
+			rear = newNode;
+		}
+		System.out.println(element + " added to queue.");
+
 	}
 
 	@Override
+	//Removes the top element of the queue
 	public String deQueue() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			System.out.println("Queue is empty.");
+			return null;
+		}
+		String removedData = front.Data;
+		front = front.next;
+		if (front == null) {
+			front = rear = null;
+		}
+		System.out.println(removedData + " removed from queue.");
+		return removedData;
 	}
 
 	@Override
+	// Print all objects in queuee
 	public void display() {
-		// TODO Auto-generated method stub
-		
+		if (isEmpty()){
+			System.out.println("Queue is empty.");
+			return;
+		}
+		else {
+			Node temp = front;
+			while (temp != null) {
+				System.out.println(temp.Data);
+				temp = temp.next;
+			}
+		}
 	}
 
 	@Override
+	// Show the top element in the queue
 	public String peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			System.out.println("Queue is empty.");
+			return null;
+		}
+		System.out.println(front.Data);
+		return front.Data;
 	}
 
 }
