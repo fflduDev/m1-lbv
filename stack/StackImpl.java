@@ -28,44 +28,63 @@ public class StackImpl implements Stack {
 
 	@Override
 	public String pop() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			System.out.println("Stack is empty");
+			return null;
+		}
+		String item = stackArray[top];
+		stackArray[top] = null;
+		top--;
+		System.out.println("Item removed from stack: " + item);
+		return item;
 	}
 
 	@Override
 	public Boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return null;
+		return top == -1;
 	}
 
 	@Override
 	public Boolean isFull() {
-		// TODO Auto-generated method stub
-		return null;
+		return top == capacity -1;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return top + 1;
 	}
 
 	@Override
 	public String peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) {
+			System.out.println("Stack is empty");
+			return null;
+		}
+		return stackArray[top]; 
 	}
 
 	@Override
 	public void setCapacity(int size) {
-		// TODO Auto-generated method stub
-		
+		if (size > capacity) {
+			String[] newArray = new String[size];
+			System.arraycopy(stackArray, 0, newArray, 0, capacity);
+			stackArray = newArray;
+			capacity = size;
+		} else {
+			System.out.println("New capacity must be larger than current capacity");
+		}
 	}
 
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
-		
+		if (isEmpty()) {
+			System.out.println("Stack is empty");
+			return;
+		}
+		System.out.println("Stack elements:");
+		for (int i = top; i >= 0; i--) {
+			System.out.println(stackArray[i]);
+		}
 	}
  
 
