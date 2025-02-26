@@ -53,7 +53,6 @@ public class QueueImpl implements Queue {
 	public void display() {
 		if (isEmpty()){
 			System.out.println("Queue is empty.");
-			return;
 		}
 		else {
 			Node temp = front;
